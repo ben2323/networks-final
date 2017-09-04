@@ -1,18 +1,18 @@
 src/UDPMessenger.d: ../src/UDPMessenger.cpp ../src/UDPMessenger.h \
- ../src/Core/UDPSocket.h ../src/Core/MThread.h ../src/Core/Semaphore.h \
- ../src/Common/TCPMessengerProtocol.h ../src/Models/User.h \
- ../src/Models/../Core/UDPSocket.h
+ ../src/Socket/UDPSocket.h ../src/Socket/MThread.h \
+ ../src/Socket/Semaphore.h ../src/Messenger/TCPMessengerProtocol.h \
+ ../src/Users/User.h ../src/Users/../Socket/UDPSocket.h
 
 ../src/UDPMessenger.h:
 
-../src/Core/UDPSocket.h:
+../src/Socket/UDPSocket.h:
 
-../src/Core/MThread.h:
+../src/Socket/MThread.h:
 
-../src/Core/Semaphore.h:
+../src/Socket/Semaphore.h:
 
-../src/Common/TCPMessengerProtocol.h:
+../src/Messenger/TCPMessengerProtocol.h:
 
-../src/Models/User.h:
+../src/Users/User.h:
 
-../src/Models/../Core/UDPSocket.h:
+../src/Users/../Socket/UDPSocket.h:

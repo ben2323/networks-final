@@ -1,9 +1,3 @@
-/*
- * Stas Mushkin 309284958
- * Noa Fialkov 204498133
- */
-
-
 
 #ifndef UDPMESSENGER_H_
 #define UDPMESSENGER_H_
@@ -11,11 +5,11 @@
 #include <string.h>
 #include <iostream>
 #include <cstdlib>
-#include "Core/UDPSocket.h"
-#include "Core/MThread.h"
-#include "Core/Semaphore.h"
-#include "Common/TCPMessengerProtocol.h"
-#include "Models/User.h"
+#include "Socket/UDPSocket.h"
+#include "Socket/MThread.h"
+#include "Socket/Semaphore.h"
+#include "Messenger/TCPMessengerProtocol.h"
+#include "Users/User.h"
 
 using namespace std;
 

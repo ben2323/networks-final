@@ -1,22 +1,17 @@
-/*
- * Stas Mushkin 309284958
- * Noa Fialkov 204498133
- */
-
 
 
 #ifndef MESSENGERCLIENT_H_
 #define MESSENGERCLIENT_H_
 
 #include <string.h>
-#include "Core/MThread.h"
-#include "Core/TCPSocket.h"
-#include "Core/UDPSocket.h"
-#include "Core/MultipleTCPSocketsListener.h"
-#include "Models/User.h"
+#include "Socket/MThread.h"
+#include "Socket/TCPSocket.h"
+#include "Socket/UDPSocket.h"
+#include "Socket/MultipleTCPSocketsListener.h"
+#include "Users/User.h"
 #include "UDPMessenger.h"
-#include "Common/TCPMessanger.h"
-#include "Common/TCPMessengerProtocol.h"
+#include "Messenger/TCPMessenger.h"
+#include "Messenger/TCPMessengerProtocol.h"
 
 
 using namespace std;

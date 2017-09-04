@@ -8,21 +8,21 @@
 
 using namespace std;
 
-void printMessngerInstructions(){
-	cout<<"---------------------CLI:---------------------"<<endl;
-	cout <<	"connect <IP> - connect to the server in the given ip" << endl;
-	cout <<	"list_users - print the user list from the server" << endl;
-	cout <<	"list_connected_users - print the connected users list" << endl;
-	cout <<	"login <user> <password> - login with the user and password" << endl;
-	cout <<	"register <user> <password> - register the new user with the given password and login the user." << endl;
-	cout <<	"open <username> - open a game session with a user" << endl;
-	cout <<	"rand - start session with a random user" << endl;
-	cout <<	"send <message> - send a game messages (s XY)" << endl;
-	cout <<	"status - print the current status of the client (connected to “xyz”/not connected)" << endl;
-	cout <<	"close_session - disconnect the open session" << endl;
-	cout <<	"disconnect - disconnect from server" << endl;
-	cout <<	"exit - close the app" << endl;
-	cout <<	"scoreboard - scoreboard" << endl;
+void printMessngerguide(){
+	cout<<"*************Command********Line*************"<<endl;
+	cout <<	"connect <IP> --> connect to server with this ip" << endl;
+	cout <<	"users --> print the user list from the server" << endl;
+	cout <<	"connected_users --> print the connected users list" << endl;
+	cout <<	"login <user> <password> --> login with the user and password" << endl;
+	cout <<	"register <user> <password> --> register new user" << endl;
+	cout <<	"open <username> --> open a game session with a user" << endl;
+	cout <<	"rand --> start session with a random user" << endl;
+	cout <<	"send <message> --> send a game messages" << endl;
+	cout <<	"status --> print the current status of the client" << endl;
+	cout <<	"close_session --> disconnect the open session" << endl;
+	cout <<	"disconnect --> disconnect from server" << endl;
+	cout <<	"quit --> close the app" << endl;
+	cout <<	"score --> score table" << endl;
 	cout<<"----------------------------------------------"<<endl;
 	cout<<"----------------------------------------------"<<endl;
 }
@@ -110,10 +110,10 @@ bool handleCommand(string command, MessengerClient* messenger){
 		cin >> ip;
 		if(validateConnected(messenger, true))
 			messenger->connect(ip);
-	}else if(command == "list_users"){
+	}else if(command == "users"){
 		if(validateConnected(messenger))
 			messenger->printAllUsers();
-	}else if(command == "list_connected_users"){
+	}else if(command == "connected_users"){
 		if(validateConnected(messenger))
 			messenger->printConnectedUsers();
 	}else if(command == "login"){
@@ -147,21 +147,21 @@ bool handleCommand(string command, MessengerClient* messenger){
 	}else if(command == "disconnect"){
 		if(validateConnected(messenger))
 			messenger->disconnect();
-	}else if(command == "exit"){
+	}else if(command == "quit"){
 		return false;
-	}else if(command == "soreboard"){
+	}else if(command == "score"){
 				if(validateConnected(messenger))
 					messenger->scoreBoard();
 	}else{
-		cout<<"wrong input, please use the cli guide"<<endl;
-		printMessngerInstructions();
+		cout<<"error input, please use the guide"<<endl;
+		printMessngerguide();
 	}
 	return true;
 }
 
 int main(){
-	cout<<"----------Welcome To Messenger Client---------"<<endl;
-	printMessngerInstructions();
+	cout<<"********Welcome*To*Messenger*Client********"<<endl;
+	printMessngerguide();
 	MessengerClient* messenger = new MessengerClient();
 	bool running = true;
 	while(running){

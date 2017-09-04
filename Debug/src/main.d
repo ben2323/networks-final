@@ -1,40 +1,40 @@
 src/main.d: ../src/main.cpp ../src/MessengerClient.h \
- ../src/Core/MThread.h ../src/Core/TCPSocket.h ../src/Core/UDPSocket.h \
- ../src/Core/MultipleTCPSocketsListener.h ../src/Core/TCPSocket.h \
- ../src/Core/Semaphore.h ../src/Models/User.h \
- ../src/Models/../Core/UDPSocket.h ../src/UDPMessenger.h \
- ../src/Core/Semaphore.h ../src/Common/TCPMessengerProtocol.h \
- ../src/Common/TCPMessanger.h ../src/Common/../Core/TCPSocket.h \
- ../src/Common/TCPMessengerProtocol.h ../src/Common/../Models/User.h
+ ../src/Socket/MThread.h ../src/Socket/TCPSocket.h \
+ ../src/Socket/UDPSocket.h ../src/Socket/MultipleTCPSocketsListener.h \
+ ../src/Socket/TCPSocket.h ../src/Socket/Semaphore.h ../src/Users/User.h \
+ ../src/Users/../Socket/UDPSocket.h ../src/UDPMessenger.h \
+ ../src/Socket/Semaphore.h ../src/Messenger/TCPMessengerProtocol.h \
+ ../src/Messenger/TCPMessenger.h ../src/Messenger/../Socket/TCPSocket.h \
+ ../src/Messenger/TCPMessengerProtocol.h ../src/Messenger/../Users/User.h
 
 ../src/MessengerClient.h:
 
-../src/Core/MThread.h:
+../src/Socket/MThread.h:
 
-../src/Core/TCPSocket.h:
+../src/Socket/TCPSocket.h:
 
-../src/Core/UDPSocket.h:
+../src/Socket/UDPSocket.h:
 
-../src/Core/MultipleTCPSocketsListener.h:
+../src/Socket/MultipleTCPSocketsListener.h:
 
-../src/Core/TCPSocket.h:
+../src/Socket/TCPSocket.h:
 
-../src/Core/Semaphore.h:
+../src/Socket/Semaphore.h:
 
-../src/Models/User.h:
+../src/Users/User.h:
 
-../src/Models/../Core/UDPSocket.h:
+../src/Users/../Socket/UDPSocket.h:
 
 ../src/UDPMessenger.h:
 
-../src/Core/Semaphore.h:
+../src/Socket/Semaphore.h:
 
-../src/Common/TCPMessengerProtocol.h:
+../src/Messenger/TCPMessengerProtocol.h:
 
-../src/Common/TCPMessanger.h:
+../src/Messenger/TCPMessenger.h:
 
-../src/Common/../Core/TCPSocket.h:
+../src/Messenger/../Socket/TCPSocket.h:
 
-../src/Common/TCPMessengerProtocol.h:
+../src/Messenger/TCPMessengerProtocol.h:
 
-../src/Common/../Models/User.h:
+../src/Messenger/../Users/User.h:

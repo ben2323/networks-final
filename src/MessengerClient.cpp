@@ -1,9 +1,3 @@
-/*
- * Stas Mushkin 309284958
- * Noa Fialkov 204498133
- */
-
-
 
 #include "MessengerClient.h"
 
@@ -165,7 +159,7 @@ void MessengerClient::disconnect(){
 void MessengerClient::scoreBoard(){
 	this->isHandlingServerData = true;
 
-		cout<<"Scoreboard: " << endl;
+		cout<<"Score table: " << endl;
 		TCPMessanger::sendCommand(this->serverSocket, GET_SCORE);
 		// now we wait for the server to answer with the users list
 		int command = TCPMessanger::readCommand(this->serverSocket);

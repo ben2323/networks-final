@@ -1,8 +1,3 @@
-/*
- * Stas Mushkin 309284958
- * Noa Fialkov 204498133
- */
-
 
 
 #include "UDPMessenger.h"
