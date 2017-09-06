@@ -101,7 +101,7 @@ void MessengerClient::printConnectedUsers(){
 	cout<<"Connected Users: " << endl;
 	vector<User*> users;
 	TCPMessanger::sendCommand(this->serverSocket, GET_CONNECTED_USERS);
-	// now we wait for the server to answer with the connected users list
+	// wait for server's answer with connected users list
 	int command = TCPMessanger::readCommand(this->serverSocket);
 	if(command == GET_CONNECTED_USERS){
 		int usersLength = TCPMessanger::readInt(this->serverSocket);
@@ -200,8 +200,7 @@ void MessengerClient::connectUser(string userName){
 		User* targetUser = this->readUser();
 		this->udpMessenger = new UDPMessenger(this->currentUser, targetUser);
 		this->udpMessenger->setTurn();
-		this->udpMessenger->setGameCharX();
-		cout<< "open session with user: " << userName << " succeeded. You are " << this->udpMessenger->getGameChar() << endl;
+		cout<< "open session with user: " << userName << " succeeded." << endl;
 	}
 	else {
 		cout << "open session with user: " << userName << " failed" << endl;
@@ -295,10 +294,10 @@ void MessengerClient::handle(){
 			user = this->readUser();
 			this->closeActiveSession();
 			this->currentUser->setListeningPort(listeningPort);
+			//creating ant]other instance (thread and socket)
 			this->udpMessenger = new UDPMessenger(this->currentUser, user);
-			this->udpMessenger->setGameCharO();
-			cout << "opening session by remote request with: " << user ->getUserName() << " you are " << this->udpMessenger->getGameChar() << endl;
-			cout << "If you are unwilling to continue playing with " << user ->getUserName() << " you can press 'y' to disconnect " << endl;
+			cout << "opening session by remote request with: " << user ->getUserName() << endl;
+			cout << "If you don't want to play with " << user ->getUserName() << " press 'exit' to disconnect " << endl;
 			break;
 		case CLOSE_SESSION_WITH_USER:
 			this->closeActiveSession(true);

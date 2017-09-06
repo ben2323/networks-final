@@ -8,11 +8,11 @@ UDPMessenger::UDPMessenger(User* currentUser, User* connectedUser){
 	this->connectedUser = connectedUser;
 	this->isRunning = false;
 	this->myturn=1;
+	this->numberToGuess = rand() % 10;
 	this->hasWon=0;
+	//creating socket
 	this->socket = new UDPSocket(currentUser->getListeningPort());
-	for (int i=0;i<3;i++)
-		for (int j=0; j<3;j++)
-			this->game[i][j]=' ';
+	//starting the thread
 	this->start();
 }
 
@@ -44,30 +44,10 @@ void UDPMessenger::receiveMessage(){
 		return;
 	if(message.length() > 8)
 	{
-		cout << "Oponent won! Please disconnect (cs)" << endl;
+		cout << "The other player has guessed the number first!" << endl;
 		this->myturn=0;
 		return;
 	}
-	int msg_row = std::atoi(messageBuffer)/10;
-	int msg_col = std::atoi(messageBuffer)%10;
-
-	cout<< ">[" << userName << "] : [" << msg_row << "," << msg_col << "]"<<endl;
-
-	if (mygamechar=='x' && msg_row>=0 && msg_row<=2 && msg_col>=0 && msg_col<=2)
-		this->game[msg_row][msg_col]='o';
-	else
-		this->game[msg_row][msg_col]='x';
-
-				cout << "------" << endl;
-				for (int i=0;i<3;i++)
-					{
-						cout << "|";
-							for (int j=0; j<3;j++)
-								cout << this->game[i][j] <<"|";
-						cout << endl << "------";
-						cout << endl;
-					}
-
 
 }
 
@@ -83,52 +63,31 @@ void UDPMessenger::setTurn(){
 	this->myturn=0;
 }
 
-void UDPMessenger::setGameCharX(){
-	this->mygamechar='x';
-}
-
-void UDPMessenger::setGameCharO(){
-	this->mygamechar='o';
-}
-
-char UDPMessenger::getGameChar(){
-	return this->mygamechar;
-}
-
 void UDPMessenger::sendMessage(string msg){
 
 		if (this->myturn)
 		{
 			char messageBuffer[4000];
 			strcpy(messageBuffer,msg.c_str());
-			int msg_row = std::atoi(messageBuffer)/10;
-			int msg_col = std::atoi(messageBuffer)%10;
-			if (this->game[msg_row][msg_col]==' ')
+
+			if (std::to_string(this->numberToGuess) != msg){
 				this->sendMessageToUser(this->connectedUser, msg);
-			else this->sendMessageToUser(this->connectedUser, "77");
+			}
+			else {
+				this->sendMessageToUser(this->connectedUser, "77");
+			}
 			this->myturn=0;
-			if (this->game[msg_row][msg_col]==' ')
-			    this->game[msg_row][msg_col]=mygamechar;
 
-
-			cout << "------" << endl;
-			for (int i=0;i<3;i++)
-				{
-					cout << "|";
-						for (int j=0; j<3;j++)
-							cout << this->game[i][j] <<"|";
-					cout << endl << "------";
-					cout << endl;
-				}
-			if((this->game[0][0]==mygamechar && this->game[0][1]==mygamechar && this->game[0][2]==mygamechar) || (this->game[1][0]==mygamechar && this->game[1][1]==mygamechar && this->game[1][2]==mygamechar) || (this->game[2][0]==mygamechar && this->game[2][1]==mygamechar && this->game[2][2]==mygamechar) || (this->game[0][0]==mygamechar && this->game[1][0]==mygamechar && this->game[2][0]==mygamechar) || (this->game[0][1]==mygamechar && this->game[1][1]==mygamechar && this->game[2][1]==mygamechar) || (this->game[0][2]==mygamechar && this->game[1][2]==mygamechar && this->game[2][2]==mygamechar) || (this->game[0][0]==mygamechar && this->game[1][1]==mygamechar && this->game[2][2]==mygamechar) || (this->game[2][0]==mygamechar && this->game[1][1]==mygamechar && this->game[0][2]==mygamechar))
+			if(std::to_string(this->numberToGuess) == msg)
 			{
-				cout << "you won! please disconnect (cs)" << endl;
+				cout << "you guessed the number correctly! " << endl;
 				this->hasWon=1;
 				this->myturn=0;
-				this->sendMessageToUser(this->connectedUser, "opopopopop");
+				//a msg longer than 8 letters - indicates the user has won.
+				this->sendMessageToUser(this->connectedUser, "abcabcxyzxyz");
 			}
 		}
-		else cout << "Not your turn!" << endl;
+		else cout << "It's not your turn to play." << endl;
 
 }
 

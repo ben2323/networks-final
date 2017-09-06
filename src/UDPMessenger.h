@@ -18,8 +18,8 @@ class UDPMessenger: public MThread{
 	UDPSocket* socket;
 	User* connectedUser;
 	User* currentUser;
-	char game[3][3];
-	char mygamechar;
+
+	int numberToGuess;
 	bool myturn;
 	bool isRunning;
 
@@ -34,9 +34,6 @@ public:
 	User* getConnectedUser();
 
 	void setTurn();
-	void setGameCharX();
-	void setGameCharO();
-	char getGameChar();
 
 	bool isConnectedToUser();
 

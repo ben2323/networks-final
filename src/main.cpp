@@ -17,7 +17,7 @@ void printMessngerguide(){
 	cout <<	"register <user> <password> --> register new user" << endl;
 	cout <<	"open <username> --> open a game session with a user" << endl;
 	cout <<	"rand --> start session with a random user" << endl;
-	cout <<	"send <message> --> send a game messages" << endl;
+	cout <<	"send <number> --> guess a number" << endl;
 	cout <<	"status --> print the current status of the client" << endl;
 	cout <<	"close_session --> disconnect the open session" << endl;
 	cout <<	"disconnect --> disconnect from server" << endl;
@@ -133,7 +133,7 @@ bool handleCommand(string command, MessengerClient* messenger){
 		do
 		{
 		getline(cin, message);
-		}while(message.length()!=3);
+		}while(message.length()!=1);
 		if(validateConnected(messenger) && validateLoggedIn(messenger) && validateActiveSession(messenger))
 			messenger->send(message);
 	}else if(command == "status"){
@@ -141,7 +141,7 @@ bool handleCommand(string command, MessengerClient* messenger){
 	}else if(command == "close_session"){
 		if(validateActiveSession(messenger))
 			messenger->closeActiveSession();
-	}else if(command == "y"){
+	}else if(command == "exit"){
 		if(validateActiveSession(messenger))
 			messenger->closeActiveSession();
 	}else if(command == "disconnect"){
